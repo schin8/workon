@@ -51,14 +51,14 @@ Create a `~/.workon` file in XML format. Example:
   <state name="current">
     <chdir>~/src</chdir>
   </state>
-  
+
   <state name="devops">
-    <chdir>$HOME/src/cloud/CyberdyneSystem </chdir>
-    <var name="AWS_ACCESS_KEY_ID" value="Tyrellxxxxxxxxxxxxxxx" />
+    <chdir>$HOME/src/cloud/CyberdineTooling</chdir>
+    <var name="AWS_ACCESS_KEY_ID" value="xxxxxxxxxxxxxxx" />
     <var name="AWS_DEFAULT_REGION" value="us-east-1" />
     <var name="AWS_PROFILE" value="dev-profile" />
   </state>
-  
+
 </workon>
 ```
 
@@ -86,11 +86,11 @@ This project is a fork of the original `workon.py` utility.
 
 - Ivan Nestlerode (2004)
 
-This fork is maintained by Steven Chin , 2025.  
+This fork is maintained by Steven Chin , 2025.
 
 See the original project for historical context and prior versions.
 
 ---
 
-Originally written by Ivan Nestlerode, 2004.  	
+Originally written by Ivan Nestlerode, 2004.
 Inspired by Rajesh Vaidheeswarran

@@ -7,8 +7,8 @@
   </state>
 
   <state name="devops">
-    <chdir>$HOME/src/cloud/CyberdyneSystem </chdir>
-    <var name="AWS_ACCESS_KEY_ID" value="Tyrellxxxxxxxxxxxxxxx" />
+    <chdir>$HOME/src/cloud/CyberdineTooling</chdir>
+    <var name="AWS_ACCESS_KEY_ID" value="xxxxxxxxxxxxxxx" />
     <var name="AWS_DEFAULT_REGION" value="us-east-1" />
     <var name="AWS_PROFILE" value="dev-profile" />
   </state>
