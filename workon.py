@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 #
 # workon - spawn a new subshell with appropriate working dir and environment
+#
+# Forked and updated by <Your Name>, <Year>
+#   - Ported to Python 3 from the original Python 2 script
+#   - Expands `~` and `$HOME` in `<chdir>` paths.
+#
 # Originally written by Ivan Nestlerode, 2004
-# Updated and enhanced by Steven Chin, 2025
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

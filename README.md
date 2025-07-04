@@ -74,5 +74,23 @@ This program is free software, distributed under the GNU General Public License 
 
 ---
 
+## Fork Notice
+
+This project is a fork of the original `workon.py` utility.
+
+**Changes and updates in this fork:**
+- Ported to Python 3 from the original Python 2 script
+- Expands `~` and `$HOME` in `<chdir>` paths.
+
+**Original authors:**
+
+- Ivan Nestlerode (2004)
+
+This fork is maintained by Steven Chin , 2025.  
+
+See the original project for historical context and prior versions.
+
+---
+
 Originally written by Ivan Nestlerode, 2004.  	
-Updated and enhanced by Steven Chin, 2025.
+Inspired by Rajesh Vaidheeswarran
