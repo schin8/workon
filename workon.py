@@ -61,8 +61,14 @@ def getVars(nodes):
     result = {}
     for node in nodes:
         if node.nodeType == node.ELEMENT_NODE and node.nodeName == 'var':
-            echoCmd = 'echo "' + getText(node) + '"'
-            f = os.popen(echoCmd, 'r')
+            # Get value from the 'value' attribute, not from text content
+            value = node.getAttribute('value')
+            if not value:
+                # Fallback to text content for backward compatibility
+                value = getText(node)
+            # Use shell evaluation to handle command substitution like $(pwd)
+            shellCmd = 'eval echo "' + value + '"'
+            f = os.popen(shellCmd, 'r')
             result[node.getAttribute('name')] = f.read()[:-1]
             f.close()
     return result

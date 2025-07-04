@@ -1,0 +1,9 @@
+<workon>
+  <!-- Test file to verify $(pwd) expansion -->
+  <var name="PROJECT_ROOT" value="$(pwd)" />
+  
+  <state name="test">
+    <chdir>.</chdir>
+    <var name="TEST_VAR" value="Current directory is $(pwd)" />
+  </state>
+</workon>

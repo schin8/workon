@@ -8,9 +8,6 @@ If you work on multiple projects, each with its own directory and environment va
 
 - Launch a shell in a specific directory and environment, as defined in your `~/.workon` XML configuration.
 - Supports global and per-state environment variables.
-- Expands `~` and `$HOME` in `<chdir>` paths.
-- List available work states.
-- Ported to Python 3 from a legacy Python 2 script.
 
 ## Installation
 
@@ -49,14 +46,24 @@ Create a `~/.workon` file in XML format. Example:
   <var name="CONFIGURATION_TIMEOUT">600000</var>
 
   <state name="current">
-    <chdir>~/src</chdir>
+    <chdir>~/src/usefulproject</chdir>
   </state>
 
   <state name="devops">
     <chdir>$HOME/src/cloud/CyberdineTooling</chdir>
     <var name="AWS_ACCESS_KEY_ID" value="xxxxxxxxxxxxxxx" />
+    <!-- 1Password expansion of vault/item/field.  Use &quot; in place of quote --> 
+    <var name="AWS_SECRET_ACCESS_KEY" value="$(op read &quot;op://devops/creds/credential&quot;)"/>
     <var name="AWS_DEFAULT_REGION" value="us-east-1" />
     <var name="AWS_PROFILE" value="dev-profile" />
+  </state>
+
+  <state name="project">
+    <chdir>$HOME/src/myproject</chdir>
+    <!-- Command substitution examples -->
+    <var name="PROJECT_ROOT" value="$(pwd)" />
+    <var name="BUILD_DATE" value="$(date +%Y%m%d)" />
+    <var name="USER_NAME" value="I am $(whoami)" />
   </state>
 
 </workon>
@@ -64,9 +71,20 @@ Create a `~/.workon` file in XML format. Example:
 
 - Each `<state>` defines a work environment.
 - `<chdir>` sets the working directory for that state.
-- `<var>` sets environment variables.
+- `<var>` sets environment variables with two supported syntaxes:
+  - `<var name="NAME" value="VALUE" />` - Recommended attribute syntax
+  - `<var name="NAME">VALUE</var>` - Text content syntax (legacy support)
   - Variables defined directly under `<workon>` are **global** and available in all states.
   - Variables inside a `<state>` are only available in that state.
+- **Command substitution**: Variable values can include shell commands using `$(command)` syntax:
+  - `$(pwd)` - Current working directory
+  - `$(date)` - Current date/time
+  - `$(whoami)` - Current username
+  - Any other shell command that produces output
+  
+  The example var AWS_SECRET_ACCESS_KEY uses the 1Password CLI to extract an api credential.
+  
+  
 
 ## License
 
@@ -79,8 +97,15 @@ This program is free software, distributed under the GNU General Public License 
 This project is a fork of the original `workon.py` utility.
 
 **Changes and updates in this fork:**
+
+- See changelog.md for detailed version history
+
+**Key improvements:**
 - Ported to Python 3 from the original Python 2 script
-- Expands `~` and `$HOME` in `<chdir>` paths.
+- Expands `~` and `$HOME` in `<chdir>` paths
+- Fixed variable handling to properly read from `value` attributes
+- Added shell command substitution support in variable values
+- Backward compatibility with legacy text content variable syntax
 
 **Original authors:**
 
