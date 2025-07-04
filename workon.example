@@ -1,0 +1,15 @@
+<workon>
+  <!-- Global Environment Variables -->
+  <var name="CONFIGURATION_TIMEOUT" value="600000" />
+
+  <state name="current">
+    <chdir>~/src</chdir>
+  </state>
+
+  <state name="devops">
+    <chdir>$HOME/src/cloud/CyberdyneSystem </chdir>
+    <var name="AWS_ACCESS_KEY_ID" value="Tyrellxxxxxxxxxxxxxxx" />
+    <var name="AWS_DEFAULT_REGION" value="us-east-1" />
+    <var name="AWS_PROFILE" value="dev-profile" />
+  </state>
+</workon>
